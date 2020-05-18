@@ -1,5 +1,5 @@
-#ifndef _ME_H
-#define _ME_H
+#ifndef _BL_H
+#define _BL_H
 
 #include <sys/time.h>
 #include <sys/wait.h>
@@ -8,17 +8,25 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <time.h>
+#include <assert.h>
 #include "dipc.h"
 
-#define KEY_MAIN        3238
-#define KEY_LOCK        3239
-#define BARRIER_START   4000
-#define BARRIER_TEST    5000
-#define BARRIER_END     6000
+#define KEY_MAIN        7100
+#define KEY_LOCK        7200
+#define PAGE_SIZE       4096
+#define BLOCK_MAX       1024
+#define BLOCK_SIZE      (1 << 20)
+#define BARRIER_START   9100
+#define BARRIER_TEST    9200
+#define BARRIER_END     9300
+#define GUARD_TIME      10   // msec
 
-#define ME_ROUNDS       10000
-#define ME_RESULT       "/tmp/.me_result"
-#define ME_RELEASE      "/tmp/.me_release"
+#define BL_BLOCKS       256
+#define BL_BLOCK_SIZE   1024 
+#define BL_EP           0.5 // Extending possibility for accessing the contineous blocks
+#define BL_ROUNDS       10000
+#define BL_RESULT       "/tmp/.bl_result"
+#define BL_RELEASE      "/tmp/.bl_release"
 
 #define SHOW_RESULT
 // #define SHOW_LOG
@@ -26,9 +34,9 @@
 // #define SHOW_BINARY
 
 #ifdef SHOW_LOG
-#define me_log printf
+#define bl_log printf
 #else
-#define me_log(...) do {} while (0)
+#define bl_log(...) do {} while (0)
 #endif
 
 #ifdef SHOW_BINARY

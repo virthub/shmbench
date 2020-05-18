@@ -12,15 +12,17 @@
 #include "dipc.h"
 #include "barrier.h"
 
-#define KEY_MAIN	 	3235
-#define BARRIER_START   4000
-#define BARRIER_TEST    5000
-#define BARRIER_END     6000
+#define KEY_MAIN         3235
+#define BARRIER_START    4000
+#define BARRIER_TEST     5000
+#define BARRIER_END      6000
 
-#define HOTSPOT_ROUNDS	10000
+#define HOTSPOT_RW_RATIO 1
+#define HOTSPOT_SIZE     262144
+#define HOTSPOT_ROUNDS   10000
 
 #define HOTSPOT_RESULT  "/tmp/.hotspot_result"
-#define HOTSPOT_RELEASE "/tmp/.hotspot_wait"
+#define HOTSPOT_RELEASE "/tmp/.hotspot_release"
 
 #define SHOW_RESULT
 // #define SHOW_LOG
